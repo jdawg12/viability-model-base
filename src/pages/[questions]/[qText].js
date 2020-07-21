@@ -63,7 +63,6 @@ return <div>
             <option value="5">5</option>
           </select>
         </label>
-        {/* <input type="submit" value="Next" /> */}
       </form>
 
       <form>
@@ -78,8 +77,8 @@ return <div>
         {/* <input type="submit" value="Next" /> */}
       </form>
       {/* <Link as={`/${e.qNum}/${e.text}`} href="/[questions]/[qText]"> */}
-
       {/* <Link as={`/1/asdasd`} href="/[questions]/[qText]"> */}
+
       <Link as={`/${newQnum+1}/${newQtext2}`} href='/[questions]/[qText]'>
       <button type='submit'> Next</button>
       </Link>
