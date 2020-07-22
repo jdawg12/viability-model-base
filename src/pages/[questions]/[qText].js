@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+// import Select from './Sel'
+import useForm from "react-hook-form";
 
 const questions = [
   {qNum: '1', text: 'Has the client identified all the potential stakeholders?'},
@@ -20,21 +22,35 @@ const questions = [
 ]
 
 
+const genderOptions = ['male', 'female', 'hagay']
+const confidence = Array.from(Array(10), (_, i) => i + 1)
+
+
 
 export default function question() {
     const router = useRouter();
     console.log(router.query);
     var newQnum = ((router.query.questions)*1)
+    if (newQnum > 13) {
+      newQnum = 0
+    }
     const newQtext = questions.map(_questions => _questions.text)[newQnum];
     var newQtext2 = JSON.stringify(newQtext)
     console.log(newQtext2)
+    
+
+  
 
 return <div>
     <h2>Question {router.query.questions}: {router.query.qText}</h2>
     <form>
         <label>
           Confidence (0-10 Scale):
-          <select defaultValue={'DEFAULT'}>
+          {/* onSelect={handleSelect} */}
+          <select defaultValue={'DEFAULT'}  
+            // name ='confidence'
+            // ref = {register}
+            >
             <option value="DEFAULT" disabled></option>
             <option value="1">1</option>
             <option value="2">2</option>
