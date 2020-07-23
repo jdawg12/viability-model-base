@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 // import Select from './Sel'
 import useForm from "react-hook-form";
+import Form from 'components/Form'
 
 const questions = [
   {qNum: '1', text: 'Has the client identified all the potential stakeholders?'},
@@ -21,12 +22,6 @@ const questions = [
 
 ]
 
-
-const genderOptions = ['male', 'female', 'hagay']
-const confidence = Array.from(Array(10), (_, i) => i + 1)
-
-
-
 export default function question() {
     const router = useRouter();
     console.log(router.query);
@@ -43,13 +38,10 @@ export default function question() {
 
 return <div>
     <h2>Question {router.query.questions}: {router.query.qText}</h2>
-    <form>
+    {/* <form>
         <label>
           Confidence (0-10 Scale):
-          {/* onSelect={handleSelect} */}
           <select defaultValue={'DEFAULT'}  
-            // name ='confidence'
-            // ref = {register}
             >
             <option value="DEFAULT" disabled></option>
             <option value="1">1</option>
@@ -64,10 +56,9 @@ return <div>
             <option value="10">10</option>
           </select>
         </label>
-        {/* <button type="submit"> Next</button> */}
-      </form>
+      </form> */}
 
-    <form>
+    {/* <form>
         <label>
           Confidence (Lickert Scale):
           <select defaultValue={'DEFAULT'}>
@@ -79,9 +70,9 @@ return <div>
             <option value="5">5</option>
           </select>
         </label>
-      </form>
+      </form> */}
 
-      <form>
+      {/* <form>
         <label>
           Confidence (Y/N):
           <select defaultValue={'DEFAULT'}>
@@ -90,13 +81,15 @@ return <div>
             <option value="No">No</option>
           </select>
         </label>
-        {/* <input type="submit" value="Next" /> */}
-      </form>
+      </form> */}
       {/* <Link as={`/${e.qNum}/${e.text}`} href="/[questions]/[qText]"> */}
       {/* <Link as={`/1/asdasd`} href="/[questions]/[qText]"> */}
 
+      <Form />
+
       <Link as={`/${newQnum+1}/${newQtext2}`} href='/[questions]/[qText]'>
-      <button type='submit'> Next</button>
+      <button>Next</button>
+
       </Link>
 
     </div>

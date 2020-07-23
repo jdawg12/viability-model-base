@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Form extends Component {
+export class QList extends Component {
     render() {
         return (
             <div>
-                Form Component
+                <p>Hello from the qList component</p>
             </div>
         )
     }
 }
 
-export default Form
+export default QList
