@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 
 export class QList extends Component {
     render() {
+
+        const { test, index } = this.props; 
         return (
             <div>
-                <p>Hello from the qList component</p>
+                <p>Question {index+1}: {test[index]}</p>
             </div>
         )
     }

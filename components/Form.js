@@ -11,6 +11,7 @@ class Form extends Component {
         }
     }
     
+    
     render() {
         // const {fullName} = this.state
         return (
@@ -44,9 +45,24 @@ class Form extends Component {
             [e.target.name] : e.target.value
             
         })
-        // console.log(this.username)
-
     }
+
+    handleSubmit = (e) => {
+        // alert(`${this.state.username} ${this.state.confidence}`)
+        e.preventDefault()
+        const data = this.state
+        console.log("Final data is: ", data)
+        this.props.addAnswerFn(this.state)
+
+        this.setState({
+            simple : '',
+            confidence : ''
+        })
+
+        this.props.updateIndexFn()
+    }
+}
+
 
     // handleConfidenceSelect = (e) => {
     //     this.setState({
@@ -56,13 +72,5 @@ class Form extends Component {
     //     console.log(this.confidence)
 
     // }
-
-    handleSubmit = (e) => {
-        // alert(`${this.state.username} ${this.state.confidence}`)
-        e.preventDefault()
-        const data = this.state
-        console.log("Final data is: ", data)
-    }
-}
-
 export default Form
+

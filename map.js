@@ -10,5 +10,25 @@
 // console.log(typeof(newQtext2))
 // console.log(newQtext2)
 
-const test = Array.from(Array(10), (_, i) => i + 1)
-console.log(test)
+const gabanna = [{name : 'john', age: '17'},
+                 {name: 'kevin', age:'42'}]
+
+
+
+const people = [
+    {name : 'boonk', age : '12'},
+    {name : 'gang', age : '15'},
+    {name : 'whole lotta', age : '11'}
+]
+
+console.log(people)
+
+const personIndex = people.findIndex(e => e.name == 'boonk')
+
+console.log(personIndex)
+
+let newPeople = [...people]
+
+Array.prototype.splice.apply(newPeople, [0, gabanna.length].concat(gabanna))
+
+console.log(newPeople)
