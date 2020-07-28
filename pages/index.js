@@ -6,7 +6,7 @@ export default function Index(){
 
     return (
     <div>
-        <h1>Index Page</h1>
+        <h1>VEMO</h1>
         <App></App>
 
     </div>

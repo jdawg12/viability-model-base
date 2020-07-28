@@ -4,19 +4,26 @@ class Form extends Component {
 
     constructor(props) {
         super(props)
+        
     
         this.state = {
              simple : '',
-             confidence : ''
+             confidence : '',
+             completed : 'false'
         }
     }
     
     
     render() {
-        // const {fullName} = this.state
+        const index = this.props.index;
+        const answers = this.props.answers;
+        console.log("Form data: ", answers)
+
         return (
+            <div>
             <form onSubmit={this.handleSubmit}>
                 <div>
+                    <p>{index}</p>
                     <label>Simple Answer</label>
                     <select value={this.state.simple} onChange = {this.handleChange} name='simple'>
                     <option value ='' disabled></option>
@@ -34,8 +41,12 @@ class Form extends Component {
                         <option value ="3">3</option>
                     </select>
                 </div>
-                <button type='submit'>Submit</button>
+                <button onClick={this.handlePrev}>Previous</button>
+                <button type = "submit" onClick = {this.handleNext}>Next</button>
+                
             </form>
+
+            </div>
             
         )
     }
@@ -47,19 +58,40 @@ class Form extends Component {
         })
     }
 
-    handleSubmit = (e) => {
+    handlePrev = () => {
+        this.props.prevIndexFn()
+    }
+
+    handleNext = () => {
+        this.setState({
+            completed : "true"
+        
+        })
+        this.props.updateIndexFn()
+    }
+
+    handleSubmit = async (e) => {
         // alert(`${this.state.username} ${this.state.confidence}`)
         e.preventDefault()
-        const data = this.state
-        console.log("Final data is: ", data)
-        this.props.addAnswerFn(this.state)
 
-        this.setState({
-            simple : '',
-            confidence : ''
-        })
+        
 
-        this.props.updateIndexFn()
+        // if (this.state.confidence === '' || this.state.simple === ''){
+        //     alert('Please select all fields')
+        // }
+        // else {
+        
+            const data = this.state
+            // console.log("Final data is: ", data)
+            this.props.addAnswerFn(this.state)
+            this.setState({
+                simple : '',
+                confidence : '',
+                completed : 'false'
+            })
+
+            
+        // }
     }
 }
 
@@ -74,3 +106,4 @@ class Form extends Component {
     // }
 export default Form
 
+//index should not be updated on submit, should be updated onclick. onsubmit should save the data to the form and that's it
